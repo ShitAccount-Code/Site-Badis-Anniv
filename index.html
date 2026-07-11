@@ -5,18 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bon anniversaire Badis 🎉</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Special+Elite&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper: #ece1c8;
-    --paper-dark: #ddceac;
-    --ink: #2e2620;
-    --ink-soft: #5b4d3d;
-    --tape: #e7d9a1;
-    --tape-pink: #e0b4a8;
-    --string: #a8443b;
-    --polaroid: #fdfaf2;
-    --shadow: rgba(46, 38, 32, 0.35);
+    --bg: #0a0808;
+    --bg2: #150a0b;
+    --blood: #9c0f1a;
+    --blood-bright: #ff2436;
+    --blood-glow: rgba(255, 36, 54, 0.55);
+    --teal: #2ec4c6;
+    --teal-bright: #7ff0f0;
+    --teal-glow: rgba(46, 196, 198, 0.5);
+    --bone: #e9e3d8;
+    --gold: #c8a24a;
+    --text-dim: #a89189;
+    --card: #120d0d;
+    --card-border: rgba(255, 36, 54, 0.28);
   }
 
   * { box-sizing: border-box; }
@@ -25,15 +29,23 @@
 
   body{
     margin:0;
-    background:
-      radial-gradient(ellipse at top left, rgba(255,255,255,0.15), transparent 60%),
-      var(--paper);
-    background-image:
-      radial-gradient(rgba(0,0,0,0.035) 1px, transparent 1px);
-    background-size: 3px 3px;
-    color: var(--ink);
-    font-family: 'Special Elite', monospace;
+    background: var(--bg);
+    color: var(--bone);
+    font-family: 'Oswald', sans-serif;
     overflow-x: hidden;
+    position: relative;
+  }
+
+  /* grain overlay */
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 500;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
   }
 
   /* ---------- HERO ---------- */
@@ -46,64 +58,196 @@
     text-align:center;
     padding: 40px 20px;
     position:relative;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 30%, rgba(156,15,26,0.35), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 90%, rgba(200,162,74,0.06), transparent 70%),
+      var(--bg);
+    overflow: hidden;
   }
 
-  .hero::before, .hero::after{
-    content:"";
-    position:absolute;
-    width:140px; height:60px;
-    background: var(--tape);
-    opacity:0.6;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  .hero-cross{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -55%);
+    width: 340px;
+    height: 340px;
+    opacity: 0.16;
+    filter: drop-shadow(0 0 40px var(--blood-glow));
+    animation: crosspulse 4s ease-in-out infinite;
+    z-index: 0;
   }
-  .hero::before{ top: 8%; left: 6%; transform: rotate(-12deg); }
-  .hero::after{ top: 10%; right: 6%; transform: rotate(10deg); background: var(--tape-pink); }
+  @keyframes crosspulse{
+    0%, 100%{ opacity: 0.12; }
+    50%{ opacity: 0.24; }
+  }
+
+  .drip{
+    position: absolute;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--blood-bright), transparent);
+    box-shadow: 0 0 8px var(--blood-glow);
+    border-radius: 0 0 3px 3px;
+    opacity: 0.5;
+    animation: dripfall 3.5s ease-in infinite;
+    z-index: 0;
+  }
+  .drip1{ top: 46%; left: calc(50% - 6px); height: 60px; animation-delay: 0s; }
+  .drip2{ top: 46%; left: calc(50% + 6px); height: 40px; animation-delay: 1.4s; }
+  .drip3{ top: 46%; left: 50%; height: 50px; animation-delay: 2.6s; }
+  @keyframes dripfall{
+    0%{ opacity: 0; transform: translateY(0) scaleY(0.6); }
+    15%{ opacity: 0.6; }
+    80%{ opacity: 0.35; }
+    100%{ opacity: 0; transform: translateY(70px) scaleY(1.3); }
+  }
+
+  .glove{
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    opacity: 0.9;
+    z-index: 1;
+    animation: glovefloat 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.35));
+  }
+  .glove-left{ top: 14%; left: 10%; animation-delay: 0s; }
+  .glove-right{ top: 16%; right: 9%; animation-delay: 2.2s; transform: scaleX(-1); }
+  @keyframes glovefloat{
+    0%, 100%{ transform: translateY(0) rotate(-6deg); }
+    50%{ transform: translateY(-14px) rotate(4deg); }
+  }
+  .glove-right{ }
+  .glove-right{ animation-name: glovefloat-r; }
+  @keyframes glovefloat-r{
+    0%, 100%{ transform: scaleX(-1) translateY(0) rotate(-6deg); }
+    50%{ transform: scaleX(-1) translateY(-14px) rotate(4deg); }
+  }
+
+  .sparkle{
+    position: absolute;
+    color: var(--bone);
+    font-size: 1rem;
+    opacity: 0;
+    animation: twinkle 2.4s ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes twinkle{
+    0%, 100%{ opacity: 0; transform: scale(0.6) rotate(0deg); }
+    50%{ opacity: 1; transform: scale(1.15) rotate(45deg); }
+  }
+
+  .wordmark{
+    position: relative;
+    height: 70px;
+    margin-bottom: 6px;
+    z-index: 1;
+  }
+  .wordmark span{
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .wordmark .w1{
+    font-family: 'Pirata One', cursive;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--bone);
+    opacity: 0.55;
+  }
+  .wordmark .w2{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    color: var(--blood-bright);
+    text-shadow: 0 0 16px var(--blood-glow);
+    transform: translateX(-50%) translateY(14px);
+    opacity: 0.9;
+  }
+
+  .teal-cross{
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    z-index: 1;
+    filter: drop-shadow(0 0 14px var(--teal-glow));
+  }
+  .teal-cross-1{ top: 8%; left: 18%; transform: rotate(180deg) rotate(-8deg); }
+  .teal-cross-2{ top: 62%; right: 14%; transform: rotate(180deg) rotate(10deg); }
+
+  .eyebrow{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
 
   .hero-title{
-    font-family: 'Permanent Marker', cursive;
-    font-size: clamp(2.2rem, 7vw, 4.5rem);
-    color: var(--string);
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.08);
-    transform: rotate(-2deg);
-    margin: 0 0 10px;
-    line-height: 1.1;
+    font-family: 'Pirata One', cursive;
+    font-size: clamp(2.4rem, 9vw, 5.4rem);
+    color: var(--bone);
+    text-shadow:
+      0 0 18px var(--blood-glow),
+      0 0 40px rgba(255,36,54,0.35),
+      2px 2px 0 rgba(0,0,0,0.6);
+    margin: 0 0 14px;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-sub{
-    font-family: 'Caveat', cursive;
-    font-size: clamp(1.3rem, 3vw, 1.9rem);
-    color: var(--ink-soft);
-    margin: 0 0 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    color: var(--text-dim);
+    margin: 0 0 34px;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-note{
     max-width: 560px;
-    background: var(--polaroid);
-    padding: 28px 26px 22px;
-    box-shadow: 0 10px 25px var(--shadow);
-    transform: rotate(1.5deg);
-    border: 1px solid rgba(0,0,0,0.06);
+    background: linear-gradient(180deg, var(--card), #0d0a0a);
+    padding: 30px 28px 26px;
+    box-shadow: 0 0 0 1px var(--card-border), 0 20px 50px rgba(0,0,0,0.6);
     position: relative;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--ink);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--bone);
+    z-index: 1;
   }
   .hero-note::before{
-    content:"";
+    content:"✝";
     position:absolute;
-    top:-18px; left:50%;
-    transform: translateX(-50%) rotate(-3deg);
-    width: 90px; height: 34px;
-    background: var(--tape);
-    opacity: 0.75;
+    top:-16px; left:50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+    color: var(--blood-bright);
+    text-shadow: 0 0 12px var(--blood-glow);
+    background: var(--bg);
+    padding: 0 12px;
   }
 
   .scroll-hint{
-    margin-top: 46px;
-    font-family: 'Caveat', cursive;
-    font-size: 1.3rem;
-    color: var(--ink-soft);
+    margin-top: 50px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
     animation: bob 2.2s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
   }
   @keyframes bob{
     0%,100%{ transform: translateY(0); }
@@ -115,77 +259,88 @@
     position: relative;
     max-width: 900px;
     margin: 0 auto;
-    padding: 60px 20px 140px;
+    padding: 60px 20px 160px;
+    background:
+      radial-gradient(ellipse 50% 30% at 50% 0%, rgba(156,15,26,0.12), transparent 70%);
   }
 
   .timeline-title{
     text-align:center;
-    font-family: 'Permanent Marker', cursive;
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    color: var(--ink);
-    margin-bottom: 70px;
-    transform: rotate(-1deg);
+    font-family: 'Pirata One', cursive;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: var(--bone);
+    text-shadow: 0 0 20px var(--blood-glow);
+    margin-bottom: 80px;
+    letter-spacing: 0.03em;
   }
 
   .thread{
     position: absolute;
-    top: 140px;
-    bottom: 60px;
+    top: 160px;
+    bottom: 80px;
     left: 50%;
-    width: 3px;
-    background: repeating-linear-gradient(
+    width: 2px;
+    background: linear-gradient(
       to bottom,
-      var(--string) 0 10px,
-      transparent 10px 18px
+      transparent,
+      var(--blood-bright) 6%,
+      var(--blood) 50%,
+      var(--blood-bright) 94%,
+      transparent
     );
+    box-shadow: 0 0 14px var(--blood-glow);
     transform: translateX(-50%);
-    opacity: 0.55;
+    opacity: 0.75;
   }
 
   .entry{
     position: relative;
     width: 46%;
-    margin-bottom: 90px;
+    margin-bottom: 100px;
   }
   .entry:nth-child(odd){ left: 0; text-align: right; }
   .entry:nth-child(even){ left: 54%; text-align: left; }
 
   .entry-date{
-    font-family: 'Caveat', cursive;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--string);
-    margin-bottom: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 10px;
   }
 
   .polaroid{
     display:inline-block;
-    background: var(--polaroid);
-    padding: 14px 14px 46px;
-    box-shadow: 0 12px 22px var(--shadow);
+    background: var(--card);
+    padding: 10px 10px 40px;
+    box-shadow: 0 0 0 1px var(--card-border), 0 18px 40px rgba(0,0,0,0.65);
     max-width: 340px;
     position: relative;
+    transition: box-shadow .3s ease, transform .3s ease;
   }
-  .entry:nth-child(4n+1) .polaroid{ transform: rotate(-3deg); }
-  .entry:nth-child(4n+2) .polaroid{ transform: rotate(2.5deg); }
-  .entry:nth-child(4n+3) .polaroid{ transform: rotate(-1.5deg); }
-  .entry:nth-child(4n+4) .polaroid{ transform: rotate(3deg); }
-  .polaroid:hover{ transform: rotate(0deg) scale(1.03); transition: transform .25s ease; }
+  .polaroid:hover{
+    box-shadow: 0 0 0 1px var(--blood-bright), 0 0 34px var(--blood-glow), 0 18px 40px rgba(0,0,0,0.7);
+    transform: scale(1.02);
+  }
 
   .polaroid img, .polaroid video{
     width: 100%;
     display:block;
     height: 220px;
     object-fit: cover;
-    background: #d8cba9;
+    background: #1a1414;
     cursor: pointer;
+    filter: grayscale(0.1) contrast(1.08) saturate(1.05);
   }
 
   /* ---------- LIGHTBOX ---------- */
   .lightbox{
     position: fixed;
     inset: 0;
-    background: rgba(20, 16, 12, 0.92);
+    background: rgba(6, 4, 4, 0.95);
     display:none;
     align-items:center;
     justify-content:center;
@@ -197,15 +352,16 @@
   .lightbox img, .lightbox video{
     max-width: 90vw;
     max-height: 85vh;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    border: 6px solid var(--polaroid);
+    box-shadow: 0 0 0 1px var(--blood-bright), 0 0 60px var(--blood-glow);
+    border: 6px solid var(--card);
   }
   .lightbox-close{
     position: absolute;
     top: 22px; right: 30px;
-    font-family: 'Permanent Marker', cursive;
-    font-size: 2rem;
-    color: var(--polaroid);
+    font-family: 'Pirata One', cursive;
+    font-size: 2.2rem;
+    color: var(--blood-bright);
+    text-shadow: 0 0 14px var(--blood-glow);
     cursor: pointer;
     line-height:1;
   }
@@ -214,9 +370,10 @@
     bottom: 26px;
     left: 0; right: 0;
     text-align:center;
-    font-family: 'Caveat', cursive;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
     font-size: 1.4rem;
-    color: var(--polaroid);
+    color: var(--bone);
     padding: 0 20px;
   }
 
@@ -226,9 +383,10 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    background: repeating-linear-gradient(45deg, #d8cba9, #d8cba9 10px, #cabb95 10px, #cabb95 20px);
-    color: var(--ink-soft);
-    font-family: 'Caveat', cursive;
+    background: repeating-linear-gradient(45deg, #1a1414, #1a1414 10px, #221515 10px, #221515 20px);
+    color: var(--text-dim);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
     font-size: 1.2rem;
     text-align:center;
     padding: 10px;
@@ -237,37 +395,29 @@
   .polaroid-caption{
     position:absolute;
     bottom: 8px; left: 14px; right: 14px;
-    font-family: 'Caveat', cursive;
-    font-size: 1.15rem;
-    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.08rem;
+    color: var(--text-dim);
     text-align:center;
-  }
-
-  .entry-title{
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.2rem;
-    color: var(--ink);
-    margin: 14px 0 6px;
-  }
-
-  .entry-text{
-    font-size: 0.92rem;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    max-width: 340px;
-    display:inline-block;
   }
 
   .pin{
     position:absolute;
-    top: -10px;
-    width: 16px; height:16px;
-    border-radius:50%;
-    background: radial-gradient(circle at 30% 30%, #e8695f, #a8302a);
-    box-shadow: 0 3px 4px rgba(0,0,0,0.4);
+    top: -14px;
+    width: 18px; height: 18px;
     left: 50%;
     transform: translateX(-50%);
   }
+  .pin::before, .pin::after{
+    content:"";
+    position:absolute;
+    background: var(--blood-bright);
+    box-shadow: 0 0 10px var(--blood-glow), 0 0 20px var(--blood-glow);
+  }
+  .pin::before{ width: 3px; height: 18px; left: 50%; transform: translateX(-50%); }
+  .pin::after{ width: 12px; height: 3px; top: 5px; left: 3px; }
 
   @media (max-width: 720px){
     .thread{ left: 24px; }
@@ -276,37 +426,149 @@
       text-align:left;
       padding-left: 54px;
     }
+    .pin{ left: 24px; }
     .polaroid{ max-width: 100%; }
-    .entry-text{ max-width: 100%; }
   }
 
   footer{
     text-align:center;
-    padding: 40px 20px 60px;
-    font-family: 'Caveat', cursive;
+    padding: 50px 20px 70px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    color: var(--text-dim);
+    position: relative;
+  }
+  footer::before{
+    content:"✝";
+    display:block;
+    color: var(--blood-bright);
+    text-shadow: 0 0 12px var(--blood-glow);
     font-size: 1.3rem;
-    color: var(--ink-soft);
+    font-family: 'Pirata One', cursive;
+    margin-bottom: 10px;
   }
 </style>
 </head>
 <body>
 
   <section class="hero">
+    <svg class="hero-cross" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect x="44" y="4" width="12" height="92" fill="var(--blood-bright)"/>
+      <rect x="14" y="30" width="72" height="12" fill="var(--blood-bright)"/>
+    </svg>
+    <div class="drip drip1"></div>
+    <div class="drip drip2"></div>
+    <div class="drip drip3"></div>
+
+    <svg class="teal-cross teal-cross-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="tealGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0d1f1f"/>
+          <stop offset="30%" stop-color="var(--teal)"/>
+          <stop offset="55%" stop-color="var(--teal-bright)"/>
+          <stop offset="80%" stop-color="var(--teal)"/>
+          <stop offset="100%" stop-color="#0d1f1f"/>
+        </linearGradient>
+      </defs>
+      <g stroke="#0a1414" stroke-width="2" stroke-linejoin="round">
+        <rect x="42" y="6" width="16" height="88" rx="3" fill="url(#tealGrad1)"/>
+        <rect x="12" y="34" width="76" height="16" rx="3" fill="url(#tealGrad1)"/>
+      </g>
+    </svg>
+
+    <svg class="teal-cross teal-cross-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="tealGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0d1f1f"/>
+          <stop offset="30%" stop-color="var(--teal)"/>
+          <stop offset="55%" stop-color="var(--teal-bright)"/>
+          <stop offset="80%" stop-color="var(--teal)"/>
+          <stop offset="100%" stop-color="#0d1f1f"/>
+        </linearGradient>
+      </defs>
+      <g stroke="#0a1414" stroke-width="2" stroke-linejoin="round">
+        <rect x="42" y="6" width="16" height="88" rx="3" fill="url(#tealGrad2)"/>
+        <rect x="12" y="34" width="76" height="16" rx="3" fill="url(#tealGrad2)"/>
+      </g>
+    </svg>
+
+    <svg class="glove glove-left" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="gloveShine" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="55%" stop-color="#f4f0e8"/>
+          <stop offset="100%" stop-color="#c9c2b3"/>
+        </radialGradient>
+      </defs>
+      <path d="M20 34 L20 14 Q20 9 25 9 Q30 9 30 14 L30 26 M30 24 L30 10 Q30 5 35 5 Q40 5 40 10 L40 26 M40 22 L40 12 Q40 7 45 7 Q50 7 50 12 L50 30 M50 26 Q54 26 54 31 L54 42 Q54 54 42 54 L28 54 Q16 54 16 42 L16 30 Q16 24 20 24 Z" fill="url(#gloveShine)" stroke="#111" stroke-width="1.5"/>
+      <circle cx="24" cy="20" r="1.1" fill="#fff"/>
+      <circle cx="34" cy="16" r="1.1" fill="#fff"/>
+      <circle cx="44" cy="18" r="1.1" fill="#fff"/>
+      <circle cx="22" cy="40" r="1.1" fill="#fff"/>
+      <circle cx="46" cy="42" r="1.1" fill="#fff"/>
+      <circle cx="32" cy="46" r="1.1" fill="#fff"/>
+    </svg>
+    <span class="sparkle" style="top:12%; left:16%; animation-delay:0.3s;">✦</span>
+
+    <svg class="glove glove-right" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="gloveShine2" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="55%" stop-color="#f4f0e8"/>
+          <stop offset="100%" stop-color="#c9c2b3"/>
+        </radialGradient>
+      </defs>
+      <path d="M20 34 L20 14 Q20 9 25 9 Q30 9 30 14 L30 26 M30 24 L30 10 Q30 5 35 5 Q40 5 40 10 L40 26 M40 22 L40 12 Q40 7 45 7 Q50 7 50 12 L50 30 M50 26 Q54 26 54 31 L54 42 Q54 54 42 54 L28 54 Q16 54 16 42 L16 30 Q16 24 20 24 Z" fill="url(#gloveShine2)" stroke="#111" stroke-width="1.5"/>
+      <circle cx="24" cy="20" r="1.1" fill="#fff"/>
+      <circle cx="34" cy="16" r="1.1" fill="#fff"/>
+      <circle cx="44" cy="18" r="1.1" fill="#fff"/>
+      <circle cx="22" cy="40" r="1.1" fill="#fff"/>
+      <circle cx="46" cy="42" r="1.1" fill="#fff"/>
+      <circle cx="32" cy="46" r="1.1" fill="#fff"/>
+    </svg>
+    <span class="sparkle" style="top:20%; right:15%; animation-delay:1.5s;">✦</span>
+    <span class="sparkle" style="top:30%; left:22%; animation-delay:2.1s;">✧</span>
+
+    <!-- Photo de Michael Jackson : mets ton fichier dans photos/mj.png -->
+    <img src="photos/mj.png" style="
+      position:absolute; top:6%; right:6%;
+      width:140px; border-radius:6px;
+      box-shadow: 0 0 0 1px var(--card-border), 0 0 30px var(--blood-glow);
+      transform: rotate(4deg);
+      z-index:1;
+    ">
+
+    <!-- Photo côté Carti/Opium : mets ton fichier dans photos/carti.png -->
+    <img src="photos/carti.png" style="
+      position:absolute; top:40%; left:5%;
+      width:140px; border-radius:6px;
+      box-shadow: 0 0 0 1px var(--teal-glow), 0 0 30px var(--teal-glow);
+      transform: rotate(-5deg);
+      z-index:1;
+    ">
+
+    <p class="eyebrow">a mixtape of us — Opium x Neverland</p>
+    <div class="wordmark">
+      <span class="w1">BADIS</span>
+      <span class="w2">BADIS</span>
+    </div>
     <h1 class="hero-title">BONNE ANNIVERSAIRE BADIS 🎉</h1>
     <p class="hero-sub">un petit site pour un grand pote</p>
     <div class="hero-note">
       Comme j'ai pas d'argent, je t'ai fait ce site qui répertorie à peu près chaque photo/événement qu'on a pris ou fait depuis qu'on se connaît. Y'aura possiblement des fichas bon visionnage ;)
     </div>
-    <div class="scroll-hint">↓ scroll pour se souvenir ↓</div>
+    <div class="scroll-hint">↓ scroll pour la tracklist ↓</div>
   </section>
 
   <section class="timeline">
-    <h2 class="timeline-title">Notre histoire</h2>
+    <h2 class="timeline-title">Tracklist</h2>
     <div class="thread"></div>
 
         <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #01</div>
+      <div class="entry-date">Track 01</div>
       <div class="polaroid">
         <img src="photos/souvenir-01.png" alt="La première fois qu'on s'est rencontrés">
         <div class="polaroid-caption">La première fois qu'on s'est rencontrés</div>
@@ -314,7 +576,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #02</div>
+      <div class="entry-date">Track 02</div>
       <div class="polaroid">
         <img src="photos/souvenir-07.png" alt="Au resto dégueu de Lei, avant la soirée The Weeknd">
         <div class="polaroid-caption">Au resto dégueu de Lei, avant la soirée The Weeknd</div>
@@ -322,7 +584,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #03</div>
+      <div class="entry-date">Track 03</div>
       <div class="polaroid">
         <img src="photos/souvenir-02.png" alt="Toi à ton anniversaire">
         <div class="polaroid-caption">Toi à ton anniversaire</div>
@@ -330,7 +592,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #04</div>
+      <div class="entry-date">Track 04</div>
       <div class="polaroid">
         <img src="photos/souvenir-03.png" alt="Quand on est allés au merch de Carti">
         <div class="polaroid-caption">Quand on est allés au merch de Carti</div>
@@ -338,7 +600,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #05</div>
+      <div class="entry-date">Track 05</div>
       <div class="polaroid">
         <img src="photos/souvenir-04.png" alt="À la supérette avant l'anniv d'Antoine">
         <div class="polaroid-caption">À la supérette avant l'anniv d'Antoine</div>
@@ -346,7 +608,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #06</div>
+      <div class="entry-date">Track 06</div>
       <div class="polaroid">
         <img src="photos/souvenir-05.png" alt="Toi avec Cody, avant qu'il soit tej">
         <div class="polaroid-caption">Toi avec Cody, avant qu'il soit tej</div>
@@ -354,7 +616,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #07</div>
+      <div class="entry-date">Track 07</div>
       <div class="polaroid">
         <img src="photos/souvenir-06.png" alt="À Bercy en sortant du ciné">
         <div class="polaroid-caption">À Bercy en sortant du ciné</div>
@@ -362,7 +624,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #08</div>
+      <div class="entry-date">Track 08</div>
       <div class="polaroid">
         <img src="photos/souvenir-08.png" alt="Chez Diesel — le vendeur t'a vanné parce que ta ceinture c'était ton câble iPhone">
         <div class="polaroid-caption">Chez Diesel — le vendeur t'a vanné parce que ta ceinture c'était ton câble iPhone</div>
@@ -370,7 +632,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #09</div>
+      <div class="entry-date">Track 09</div>
       <div class="polaroid">
         <img src="photos/souvenir-09.png" alt="Quand sur LinkedIn tu donnais des bonbons aux enfants pour Halloween">
         <div class="polaroid-caption">Quand sur LinkedIn tu donnais des bonbons aux enfants pour Halloween</div>
@@ -378,7 +640,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #10</div>
+      <div class="entry-date">Track 10</div>
       <div class="polaroid">
         <img src="photos/souvenir-10.png" alt="À l'anniv de Lei, quand t'as mangé comme un porc">
         <div class="polaroid-caption">À l'anniv de Lei, quand t'as mangé comme un porc</div>
@@ -386,7 +648,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #11</div>
+      <div class="entry-date">Track 11</div>
       <div class="polaroid">
         <img src="photos/souvenir-11.png" alt="Quand il a neigé et qu'on est sortis jouer dans la neige">
         <div class="polaroid-caption">Quand il a neigé et qu'on est sortis jouer dans la neige</div>
@@ -394,7 +656,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #12</div>
+      <div class="entry-date">Track 12</div>
       <div class="polaroid">
         <img src="photos/souvenir-12.png" alt="Toi en appel iPhone pendant une session GTA Online">
         <div class="polaroid-caption">Toi en appel iPhone pendant une session GTA Online</div>
@@ -402,7 +664,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #13</div>
+      <div class="entry-date">Track 13</div>
       <div class="polaroid">
         <img src="photos/souvenir-13.png" alt="Au magasin de donuts de Lei, après qu'elle m'a engueulé parce que je l'avais fait poireauter">
         <div class="polaroid-caption">Au magasin de donuts de Lei, après qu'elle m'a engueulé parce que je l'avais fait poireauter</div>
@@ -410,7 +672,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #14</div>
+      <div class="entry-date">Track 14</div>
       <div class="polaroid">
         <img src="photos/souvenir-14.png" alt="Toi et moi à la soirée 6K">
         <div class="polaroid-caption">Toi et moi à la soirée 6K</div>
@@ -418,7 +680,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #15</div>
+      <div class="entry-date">Track 15</div>
       <div class="polaroid">
         <img src="photos/souvenir-15.png" alt="Toi et Jerem au concert de Ken Carson">
         <div class="polaroid-caption">Toi et Jerem au concert de Ken Carson</div>
@@ -426,7 +688,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #16</div>
+      <div class="entry-date">Track 16</div>
       <div class="polaroid">
         <img src="photos/souvenir-16.png" alt="Juste une photo de toi et moi que j'aime bien">
         <div class="polaroid-caption">Juste une photo de toi et moi que j'aime bien</div>
@@ -434,7 +696,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #17</div>
+      <div class="entry-date">Track 17</div>
       <div class="polaroid">
         <img src="photos/souvenir-17.png" alt="Quand t'es allé voir Carti en showcase">
         <div class="polaroid-caption">Quand t'es allé voir Carti en showcase</div>
@@ -442,7 +704,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Souvenir #18</div>
+      <div class="entry-date">Track 18</div>
       <div class="polaroid">
         <img src="photos/souvenir-18.png" alt="La photo qu'on a prise pendant France-Maroc">
         <div class="polaroid-caption">La photo qu'on a prise pendant France-Maroc</div>
@@ -451,7 +713,7 @@
   </section>
 
   <footer>
-    fait avec galère et beaucoup d'amitié 🎂
+    fait avec galère, beaucoup d'amitié et un peu de MUSIC 🎂🖤
   </footer>
 
   <div class="lightbox" id="lightbox">
