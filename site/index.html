@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bon anniversaire Badis 🎉</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Special+Elite&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #ece1c8;
+    --paper-dark: #ddceac;
+    --ink: #2e2620;
+    --ink-soft: #5b4d3d;
+    --tape: #e7d9a1;
+    --tape-pink: #e0b4a8;
+    --string: #a8443b;
+    --polaroid: #fdfaf2;
+    --shadow: rgba(46, 38, 32, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top left, rgba(255,255,255,0.15), transparent 60%),
+      var(--paper);
+    background-image:
+      radial-gradient(rgba(0,0,0,0.035) 1px, transparent 1px);
+    background-size: 3px 3px;
+    color: var(--ink);
+    font-family: 'Special Elite', monospace;
+    overflow-x: hidden;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 40px 20px;
+    position:relative;
+  }
+
+  .hero::before, .hero::after{
+    content:"";
+    position:absolute;
+    width:140px; height:60px;
+    background: var(--tape);
+    opacity:0.6;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  .hero::before{ top: 8%; left: 6%; transform: rotate(-12deg); }
+  .hero::after{ top: 10%; right: 6%; transform: rotate(10deg); background: var(--tape-pink); }
+
+  .hero-title{
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    color: var(--string);
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.08);
+    transform: rotate(-2deg);
+    margin: 0 0 10px;
+    line-height: 1.1;
+  }
+
+  .hero-sub{
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    color: var(--ink-soft);
+    margin: 0 0 30px;
+  }
+
+  .hero-note{
+    max-width: 560px;
+    background: var(--polaroid);
+    padding: 28px 26px 22px;
+    box-shadow: 0 10px 25px var(--shadow);
+    transform: rotate(1.5deg);
+    border: 1px solid rgba(0,0,0,0.06);
+    position: relative;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .hero-note::before{
+    content:"";
+    position:absolute;
+    top:-18px; left:50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 90px; height: 34px;
+    background: var(--tape);
+    opacity: 0.75;
+  }
+
+  .scroll-hint{
+    margin-top: 46px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    color: var(--ink-soft);
+    animation: bob 2.2s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(8px); }
+  }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px 140px;
+  }
+
+  .timeline-title{
+    text-align:center;
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--ink);
+    margin-bottom: 70px;
+    transform: rotate(-1deg);
+  }
+
+  .thread{
+    position: absolute;
+    top: 140px;
+    bottom: 60px;
+    left: 50%;
+    width: 3px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--string) 0 10px,
+      transparent 10px 18px
+    );
+    transform: translateX(-50%);
+    opacity: 0.55;
+  }
+
+  .entry{
+    position: relative;
+    width: 46%;
+    margin-bottom: 90px;
+  }
+  .entry:nth-child(odd){ left: 0; text-align: right; }
+  .entry:nth-child(even){ left: 54%; text-align: left; }
+
+  .entry-date{
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--string);
+    margin-bottom: 6px;
+  }
+
+  .polaroid{
+    display:inline-block;
+    background: var(--polaroid);
+    padding: 14px 14px 46px;
+    box-shadow: 0 12px 22px var(--shadow);
+    max-width: 340px;
+    position: relative;
+  }
+  .entry:nth-child(4n+1) .polaroid{ transform: rotate(-3deg); }
+  .entry:nth-child(4n+2) .polaroid{ transform: rotate(2.5deg); }
+  .entry:nth-child(4n+3) .polaroid{ transform: rotate(-1.5deg); }
+  .entry:nth-child(4n+4) .polaroid{ transform: rotate(3deg); }
+  .polaroid:hover{ transform: rotate(0deg) scale(1.03); transition: transform .25s ease; }
+
+  .polaroid img, .polaroid video{
+    width: 100%;
+    display:block;
+    height: 220px;
+    object-fit: cover;
+    background: #d8cba9;
+    cursor: pointer;
+  }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 16, 12, 0.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index: 999;
+    padding: 30px;
+    cursor: zoom-out;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img, .lightbox video{
+    max-width: 90vw;
+    max-height: 85vh;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    border: 6px solid var(--polaroid);
+  }
+  .lightbox-close{
+    position: absolute;
+    top: 22px; right: 30px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2rem;
+    color: var(--polaroid);
+    cursor: pointer;
+    line-height:1;
+  }
+  .lightbox-caption{
+    position:absolute;
+    bottom: 26px;
+    left: 0; right: 0;
+    text-align:center;
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    color: var(--polaroid);
+    padding: 0 20px;
+  }
+
+  .media-placeholder{
+    width:100%;
+    height:220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: repeating-linear-gradient(45deg, #d8cba9, #d8cba9 10px, #cabb95 10px, #cabb95 20px);
+    color: var(--ink-soft);
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    text-align:center;
+    padding: 10px;
+  }
+
+  .polaroid-caption{
+    position:absolute;
+    bottom: 8px; left: 14px; right: 14px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.15rem;
+    color: var(--ink);
+    text-align:center;
+  }
+
+  .entry-title{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin: 14px 0 6px;
+  }
+
+  .entry-text{
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 340px;
+    display:inline-block;
+  }
+
+  .pin{
+    position:absolute;
+    top: -10px;
+    width: 16px; height:16px;
+    border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, #e8695f, #a8302a);
+    box-shadow: 0 3px 4px rgba(0,0,0,0.4);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: 720px){
+    .thread{ left: 24px; }
+    .entry, .entry:nth-child(odd), .entry:nth-child(even){
+      left: 0; width: 100%;
+      text-align:left;
+      padding-left: 54px;
+    }
+    .polaroid{ max-width: 100%; }
+    .entry-text{ max-width: 100%; }
+  }
+
+  footer{
+    text-align:center;
+    padding: 40px 20px 60px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1 class="hero-title">BONNE ANNIVERSAIRE BADIS 🎉</h1>
+    <p class="hero-sub">un petit site pour un grand pote</p>
+    <div class="hero-note">
+      Comme j'ai pas d'argent, je t'ai fait ce site qui répertorie à peu près chaque photo/événement qu'on a pris ou fait depuis qu'on se connaît. Y'aura possiblement des fichas bon visionnage ;)
+    </div>
+    <div class="scroll-hint">↓ scroll pour se souvenir ↓</div>
+  </section>
+
+  <section class="timeline">
+    <h2 class="timeline-title">Notre histoire</h2>
+    <div class="thread"></div>
+
+        <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #01</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-01.png" alt="La première fois qu'on s'est rencontrés">
+        <div class="polaroid-caption">La première fois qu'on s'est rencontrés</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #02</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-07.png" alt="Au resto dégueu de Lei, avant la soirée The Weeknd">
+        <div class="polaroid-caption">Au resto dégueu de Lei, avant la soirée The Weeknd</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #03</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-02.png" alt="Toi à ton anniversaire">
+        <div class="polaroid-caption">Toi à ton anniversaire</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #04</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-03.png" alt="Quand on est allés au merch de Carti">
+        <div class="polaroid-caption">Quand on est allés au merch de Carti</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #05</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-04.png" alt="À la supérette avant l'anniv d'Antoine">
+        <div class="polaroid-caption">À la supérette avant l'anniv d'Antoine</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #06</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-05.png" alt="Toi avec Cody, avant qu'il soit tej">
+        <div class="polaroid-caption">Toi avec Cody, avant qu'il soit tej</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #07</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-06.png" alt="À Bercy en sortant du ciné">
+        <div class="polaroid-caption">À Bercy en sortant du ciné</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #08</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-08.png" alt="Chez Diesel — le vendeur t'a vanné parce que ta ceinture c'était ton câble iPhone">
+        <div class="polaroid-caption">Chez Diesel — le vendeur t'a vanné parce que ta ceinture c'était ton câble iPhone</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #09</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-09.png" alt="Quand sur LinkedIn tu donnais des bonbons aux enfants pour Halloween">
+        <div class="polaroid-caption">Quand sur LinkedIn tu donnais des bonbons aux enfants pour Halloween</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #10</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-10.png" alt="À l'anniv de Lei, quand t'as mangé comme un porc">
+        <div class="polaroid-caption">À l'anniv de Lei, quand t'as mangé comme un porc</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #11</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-11.png" alt="Quand il a neigé et qu'on est sortis jouer dans la neige">
+        <div class="polaroid-caption">Quand il a neigé et qu'on est sortis jouer dans la neige</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #12</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-12.png" alt="Toi en appel iPhone pendant une session GTA Online">
+        <div class="polaroid-caption">Toi en appel iPhone pendant une session GTA Online</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #13</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-13.png" alt="Au magasin de donuts de Lei, après qu'elle m'a engueulé parce que je l'avais fait poireauter">
+        <div class="polaroid-caption">Au magasin de donuts de Lei, après qu'elle m'a engueulé parce que je l'avais fait poireauter</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #14</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-14.png" alt="Toi et moi à la soirée 6K">
+        <div class="polaroid-caption">Toi et moi à la soirée 6K</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #15</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-15.png" alt="Toi et Jerem au concert de Ken Carson">
+        <div class="polaroid-caption">Toi et Jerem au concert de Ken Carson</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #16</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-16.png" alt="Juste une photo de toi et moi que j'aime bien">
+        <div class="polaroid-caption">Juste une photo de toi et moi que j'aime bien</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #17</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-17.png" alt="Quand t'es allé voir Carti en showcase">
+        <div class="polaroid-caption">Quand t'es allé voir Carti en showcase</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Souvenir #18</div>
+      <div class="polaroid">
+        <img src="photos/souvenir-18.png" alt="La photo qu'on a prise pendant France-Maroc">
+        <div class="polaroid-caption">La photo qu'on a prise pendant France-Maroc</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    fait avec galère et beaucoup d'amitié 🎂
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">✕</span>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.polaroid img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        const caption = img.closest('.polaroid').querySelector('.polaroid-caption');
+        lightboxCaption.textContent = caption ? caption.textContent : '';
+        lightbox.classList.add('open');
+      });
+    });
+
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      lightboxImg.src = '';
+    }
+
+    lightbox.addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
