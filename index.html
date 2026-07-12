@@ -48,6 +48,33 @@
     mix-blend-mode: overlay;
   }
 
+  .page-wrap{
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .side-crosses{
+    width: 46px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='150'%3E%3Crect x='24' y='10' width='12' height='100' fill='%232ec4c6' fill-opacity='0.5'/%3E%3Crect x='9' y='78' width='42' height='12' fill='%232ec4c6' fill-opacity='0.5'/%3E%3C/svg%3E");
+    background-repeat: repeat-y;
+    background-position: center top;
+    background-size: 46px 150px;
+  }
+
+  @media (max-width: 900px){
+    .side-crosses{ width: 20px; background-size: 20px 120px; }
+  }
+  @media (max-width: 560px){
+    .side-crosses{ display: none; }
+  }
+
+  .content-col{
+    flex: 1;
+    min-width: 0;
+  }
+
   /* ---------- HERO ---------- */
   .hero{
     min-height: 100vh;
@@ -453,6 +480,10 @@
 </head>
 <body>
 
+  <div class="page-wrap">
+    <div class="side-crosses"></div>
+    <div class="content-col">
+
   <section class="hero">
     <svg class="hero-cross" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <rect x="44" y="4" width="12" height="92" fill="var(--blood-bright)"/>
@@ -533,7 +564,7 @@
 
     <!-- Photo de Michael Jackson : mets ton fichier dans photos/mj.png -->
     <img src="photos/mj.png" style="
-      position:absolute; top:6%; right:6%;
+      position:absolute; top:40%; right:5%;
       width:140px; border-radius:6px;
       box-shadow: 0 0 0 1px var(--card-border), 0 0 30px var(--blood-glow);
       transform: rotate(4deg);
@@ -725,8 +756,12 @@
   </section>
 
   <footer>
-     J'espère que tu as kiffé. J'aurais aimé t'offrir bien plus, mais j'ai aucune tal 😂 n'oublie jamais à quel point tu comptes pour moi et que n'importe l'heure et la date je serai tjr là pour t'aider et te répondre 🙏🏻 Bonne anniv à très vite mon frère. LOVE U 🎂🖤
+    fait avec galère, beaucoup d'amitié et un peu de MUSIC 🎂🖤
   </footer>
+
+    </div>
+    <div class="side-crosses"></div>
+  </div>
 
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="lightboxClose">✕</span>
