@@ -363,6 +363,34 @@
     filter: grayscale(0.1) contrast(1.08) saturate(1.05);
   }
 
+  .video-wrap{
+    position: relative;
+  }
+  .video-wrap video{
+    pointer-events: none;
+  }
+  .play-icon{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(6,4,4,0.55);
+    box-shadow: 0 0 0 1px var(--blood-bright), 0 0 24px var(--blood-glow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+  .play-icon::after{
+    content:"";
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent var(--bone);
+    margin-left: 4px;
+  }
+
   /* ---------- LIGHTBOX ---------- */
   .lightbox{
     position: fixed;
@@ -608,8 +636,7 @@
   <section class="timeline">
     <h2 class="timeline-title">Tracklist</h2>
     <div class="thread"></div>
-
-        <div class="entry">
+    <div class="entry">
       <div class="pin"></div>
       <div class="entry-date">Track 01</div>
       <div class="polaroid">
@@ -621,13 +648,35 @@
       <div class="pin"></div>
       <div class="entry-date">Track 02</div>
       <div class="polaroid">
+        <div class="video-wrap">
+          <video src="videos/souvenir-video-01.mp4" preload="metadata" muted playsinline></video>
+          <div class="play-icon"></div>
+        </div>
+        <div class="polaroid-caption">Première soirée 6K avec toi et les autres</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Track 03</div>
+      <div class="polaroid">
         <img src="photos/souvenir-07.png" alt="Au resto dégueu de Lei, avant la soirée The Weeknd">
         <div class="polaroid-caption">Au resto dégueu de Lei, avant la soirée The Weeknd</div>
       </div>
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 03</div>
+      <div class="entry-date">Track 04</div>
+      <div class="polaroid">
+        <div class="video-wrap">
+          <video src="videos/souvenir-video-02.mp4" preload="metadata" muted playsinline></video>
+          <div class="play-icon"></div>
+        </div>
+        <div class="polaroid-caption">Quand tu regardais le bébé avant d'aller voir le film du père d'Isa</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Track 05</div>
       <div class="polaroid">
         <img src="photos/souvenir-02.png" alt="Toi à ton anniversaire">
         <div class="polaroid-caption">Toi à ton anniversaire</div>
@@ -635,7 +684,18 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 04</div>
+      <div class="entry-date">Track 06</div>
+      <div class="polaroid">
+        <div class="video-wrap">
+          <video src="videos/souvenir-video-03.mp4" preload="metadata" muted playsinline></video>
+          <div class="play-icon"></div>
+        </div>
+        <div class="polaroid-caption">Quand on a mangé au resto le soir de ton anniv</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Track 07</div>
       <div class="polaroid">
         <img src="photos/souvenir-03.png" alt="Quand on est allés au merch de Carti">
         <div class="polaroid-caption">Quand on est allés au merch de Carti</div>
@@ -643,7 +703,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 05</div>
+      <div class="entry-date">Track 08</div>
       <div class="polaroid">
         <img src="photos/souvenir-04.png" alt="À la supérette avant l'anniv d'Antoine">
         <div class="polaroid-caption">À la supérette avant l'anniv d'Antoine</div>
@@ -651,7 +711,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 06</div>
+      <div class="entry-date">Track 09</div>
       <div class="polaroid">
         <img src="photos/souvenir-05.png" alt="Toi avec Cody, avant qu'il soit tej">
         <div class="polaroid-caption">Toi avec Cody, avant qu'il soit tej</div>
@@ -659,7 +719,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 07</div>
+      <div class="entry-date">Track 10</div>
       <div class="polaroid">
         <img src="photos/souvenir-06.png" alt="À Bercy en sortant du ciné">
         <div class="polaroid-caption">À Bercy en sortant du ciné</div>
@@ -667,7 +727,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 08</div>
+      <div class="entry-date">Track 11</div>
       <div class="polaroid">
         <img src="photos/souvenir-08.png" alt="Chez Diesel — le vendeur t'a vanné parce que ta ceinture c'était ton câble iPhone">
         <div class="polaroid-caption">Chez Diesel — le vendeur t'a vanné parce que ta ceinture c'était ton câble iPhone</div>
@@ -675,7 +735,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 09</div>
+      <div class="entry-date">Track 12</div>
       <div class="polaroid">
         <img src="photos/souvenir-09.png" alt="Quand sur LinkedIn tu donnais des bonbons aux enfants pour Halloween">
         <div class="polaroid-caption">Quand sur LinkedIn tu donnais des bonbons aux enfants pour Halloween</div>
@@ -683,7 +743,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 10</div>
+      <div class="entry-date">Track 13</div>
       <div class="polaroid">
         <img src="photos/souvenir-10.png" alt="À l'anniv de Lei, quand t'as mangé comme un porc">
         <div class="polaroid-caption">À l'anniv de Lei, quand t'as mangé comme un porc</div>
@@ -691,7 +751,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 11</div>
+      <div class="entry-date">Track 14</div>
       <div class="polaroid">
         <img src="photos/souvenir-11.png" alt="Quand il a neigé et qu'on est sortis jouer dans la neige">
         <div class="polaroid-caption">Quand il a neigé et qu'on est sortis jouer dans la neige</div>
@@ -699,7 +759,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 12</div>
+      <div class="entry-date">Track 15</div>
       <div class="polaroid">
         <img src="photos/souvenir-12.png" alt="Toi en appel iPhone pendant une session GTA Online">
         <div class="polaroid-caption">Toi en appel iPhone pendant une session GTA Online</div>
@@ -707,7 +767,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 13</div>
+      <div class="entry-date">Track 16</div>
       <div class="polaroid">
         <img src="photos/souvenir-13.png" alt="Au magasin de donuts de Lei, après qu'elle m'a engueulé parce que je l'avais fait poireauter">
         <div class="polaroid-caption">Au magasin de donuts de Lei, après qu'elle m'a engueulé parce que je l'avais fait poireauter</div>
@@ -715,7 +775,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 14</div>
+      <div class="entry-date">Track 17</div>
       <div class="polaroid">
         <img src="photos/souvenir-14.png" alt="Toi et moi à la soirée 6K">
         <div class="polaroid-caption">Toi et moi à la soirée 6K</div>
@@ -723,7 +783,18 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 15</div>
+      <div class="entry-date">Track 18</div>
+      <div class="polaroid">
+        <div class="video-wrap">
+          <video src="videos/souvenir-video-04.mp4" preload="metadata" muted playsinline></video>
+          <div class="play-icon"></div>
+        </div>
+        <div class="polaroid-caption">À la dernière 6th Rage, quand les gens t'ont porté</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Track 19</div>
       <div class="polaroid">
         <img src="photos/souvenir-15.png" alt="Toi et Jerem au concert de Ken Carson">
         <div class="polaroid-caption">Toi et Jerem au concert de Ken Carson</div>
@@ -731,7 +802,18 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 16</div>
+      <div class="entry-date">Track 20</div>
+      <div class="polaroid">
+        <div class="video-wrap">
+          <video src="videos/souvenir-video-05.mp4" preload="metadata" muted playsinline></video>
+          <div class="play-icon"></div>
+        </div>
+        <div class="polaroid-caption">Avant que tu partes aux US, quand on est allés manger avec Lei</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="pin"></div>
+      <div class="entry-date">Track 21</div>
       <div class="polaroid">
         <img src="photos/souvenir-16.png" alt="Juste une photo de toi et moi que j'aime bien">
         <div class="polaroid-caption">Juste une photo de toi et moi que j'aime bien</div>
@@ -739,7 +821,7 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 17</div>
+      <div class="entry-date">Track 22</div>
       <div class="polaroid">
         <img src="photos/souvenir-17.png" alt="Quand t'es allé voir Carti en showcase">
         <div class="polaroid-caption">Quand t'es allé voir Carti en showcase</div>
@@ -747,16 +829,47 @@
     </div>
     <div class="entry">
       <div class="pin"></div>
-      <div class="entry-date">Track 18</div>
+      <div class="entry-date">Track 23</div>
       <div class="polaroid">
         <img src="photos/souvenir-18.png" alt="La photo qu'on a prise pendant France-Maroc">
         <div class="polaroid-caption">La photo qu'on a prise pendant France-Maroc</div>
       </div>
     </div>
+    <div class="entry" style="width:100%; left:0; text-align:center;">
+      <div class="pin"></div>
+      <div class="entry-date">Outro</div>
+      <div class="polaroid" style="display:inline-block; max-width:480px;">
+        <div class="polaroid-caption" style="position:static; font-size:1.4rem; padding:20px 10px;">Bonne Anniv Badis 🫶🏻 𝐈 𝐀𝐌 𝐌𝐔𝐒𝐈𝐂 ♛ℳ𝒥♛</div>
+      </div>
+    </div>
+
+    <!--
+      ============================================
+      COMMENT AJOUTER UNE VIDÉO :
+      1. Mets ton fichier .mp4 dans le dossier videos/
+      2. Colle ce bloc juste avant </section> et remplace
+         "videos/NOM_FICHIER.mp4" et la légende par les tiens
+         (clic sur la vignette = ouverture en grand avec lecture,
+         comme pour les photos)
+
+      <div class="entry">
+        <div class="pin"></div>
+        <div class="entry-date">Track 19</div>
+        <div class="polaroid">
+          <div class="video-wrap">
+            <video src="videos/NOM_FICHIER.mp4" preload="metadata" muted playsinline></video>
+            <div class="play-icon"></div>
+          </div>
+          <div class="polaroid-caption">légende de la vidéo ici</div>
+        </div>
+      </div>
+      ============================================
+    -->
+
   </section>
 
   <footer>
-    fait avec galère, beaucoup d'amitié et un peu de MUSIC 🎂🖤
+    J'espère que tu as kiffé. J'aurais aimé t'offrir bien plus, mais j'ai aucune tal 😂 n'oublie jamais à quel point tu comptes pour moi et que n'importe l'heure et la date je serai tjr là pour t'aider et te répondre quelle que soit le besoin et l'urgence 🙏🏻 Bonne anniv à très vite mon frère. LOVE U 🎂🖤
   </footer>
 
     </div>
@@ -766,17 +879,22 @@
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="lightboxClose">✕</span>
     <img id="lightboxImg" src="" alt="">
+    <video id="lightboxVideo" controls playsinline style="display:none;"></video>
     <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
 
   <script>
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxVideo = document.getElementById('lightboxVideo');
     const lightboxCaption = document.getElementById('lightboxCaption');
     const lightboxClose = document.getElementById('lightboxClose');
 
     document.querySelectorAll('.polaroid img').forEach(img => {
       img.addEventListener('click', () => {
+        lightboxVideo.pause();
+        lightboxVideo.style.display = 'none';
+        lightboxImg.style.display = 'block';
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
         const caption = img.closest('.polaroid').querySelector('.polaroid-caption');
@@ -785,16 +903,36 @@
       });
     });
 
+    document.querySelectorAll('.video-wrap').forEach(wrap => {
+      wrap.addEventListener('click', () => {
+        const video = wrap.querySelector('video');
+        lightboxImg.style.display = 'none';
+        lightboxVideo.style.display = 'block';
+        lightboxVideo.src = video.currentSrc || video.querySelector('source')?.src || video.src;
+        const caption = wrap.closest('.polaroid').querySelector('.polaroid-caption');
+        lightboxCaption.textContent = caption ? caption.textContent : '';
+        lightbox.classList.add('open');
+        lightboxVideo.play();
+      });
+    });
+
     function closeLightbox(){
       lightbox.classList.remove('open');
       lightboxImg.src = '';
+      lightboxVideo.pause();
+      lightboxVideo.removeAttribute('src');
+      lightboxVideo.load();
     }
 
-    lightbox.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightboxVideo) return;
+      closeLightbox();
+    });
     lightboxClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeLightbox();
     });
+  </script>
   </script>
 
 </body>
