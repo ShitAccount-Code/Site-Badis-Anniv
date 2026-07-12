@@ -504,6 +504,57 @@
     font-family: 'Pirata One', cursive;
     margin-bottom: 10px;
   }
+
+  .music-toggle{
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--card);
+    box-shadow: 0 0 0 1px var(--blood-bright), 0 0 20px var(--blood-glow), 0 8px 20px rgba(0,0,0,0.5);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor: pointer;
+    z-index: 800;
+    font-size: 1.3rem;
+    transition: transform .2s ease;
+  }
+  .music-toggle:hover{ transform: scale(1.08); }
+  .music-toggle.playing{
+    animation: vinylspin 3s linear infinite;
+  }
+  @keyframes vinylspin{
+    from{ transform: rotate(0deg); }
+    to{ transform: rotate(360deg); }
+  }
+
+  .music-panel{
+    position: fixed;
+    bottom: 82px;
+    right: 22px;
+    background: var(--card);
+    box-shadow: 0 0 0 1px var(--card-border), 0 8px 24px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 800;
+    width: 180px;
+  }
+  .music-panel.open{ display: flex; }
+  .music-panel label{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+  }
+  .music-panel input[type="range"]{
+    width: 100%;
+    accent-color: var(--blood-bright);
+  }
 </style>
 </head>
 <body>
@@ -869,12 +920,23 @@
   </section>
 
   <footer>
-    J'espère que tu as kiffé. J'aurais aimé t'offrir bien plus, mais j'ai aucune tal 😂 n'oublie jamais à quel point tu comptes pour moi et que n'importe l'heure et la date je serai tjr là pour t'aider et te répondre quelle que soit le besoin et l'urgence 🙏🏻 Bonne anniv à très vite mon frère. LOVE U 🎂🖤
+    fait avec galère, beaucoup d'amitié et un peu de MUSIC 🎂🖤
   </footer>
 
     </div>
     <div class="side-crosses"></div>
   </div>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music/musique.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="music-panel" id="musicPanel">
+    <label for="volumeSlider">Volume</label>
+    <input type="range" id="volumeSlider" min="0" max="100" value="60">
+    <label style="cursor:pointer; text-align:center; margin-top:4px;" id="playPauseLabel">⏸ Pause</label>
+  </div>
+  <div class="music-toggle" id="musicToggle">🎵</div>
 
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="lightboxClose">✕</span>
@@ -932,6 +994,62 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeLightbox();
     });
+
+    // musique de fond : se lance au premier clic/scroll (contournement du blocage autoplay des navigateurs)
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicPanel = document.getElementById('musicPanel');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const playPauseLabel = document.getElementById('playPauseLabel');
+    let musicStarted = false;
+
+    bgMusic.volume = 0.6;
+
+    function startMusic(){
+      if (musicStarted) return;
+      musicStarted = true;
+      bgMusic.play().then(() => {
+        musicToggle.classList.add('playing');
+        playPauseLabel.textContent = '⏸ Pause';
+      }).catch(() => {
+        musicStarted = false;
+      });
+    }
+
+    ['click', 'scroll', 'touchstart', 'keydown'].forEach(evt => {
+      document.addEventListener(evt, startMusic, { once: true, passive: true });
+    });
+
+    // clic sur l'icône = ouvre/ferme le panneau de contrôle
+    musicToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      musicPanel.classList.toggle('open');
+    });
+
+    // ferme le panneau si on clique ailleurs
+    document.addEventListener('click', (e) => {
+      if (!musicPanel.contains(e.target) && e.target !== musicToggle){
+        musicPanel.classList.remove('open');
+      }
+    });
+
+    playPauseLabel.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (bgMusic.paused){
+        bgMusic.play();
+        musicToggle.classList.add('playing');
+        playPauseLabel.textContent = '⏸ Pause';
+      } else {
+        bgMusic.pause();
+        musicToggle.classList.remove('playing');
+        playPauseLabel.textContent = '▶ Lecture';
+      }
+    });
+
+    volumeSlider.addEventListener('input', (e) => {
+      bgMusic.volume = e.target.value / 100;
+    });
+    volumeSlider.addEventListener('click', (e) => e.stopPropagation());
   </script>
   </script>
 
