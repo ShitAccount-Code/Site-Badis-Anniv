@@ -69,6 +69,9 @@
   @media (max-width: 560px){
     .side-crosses{ display: none; }
   }
+  @media (max-width: 700px){
+    .outro-photo{ display: none; }
+  }
 
   .content-col{
     flex: 1;
@@ -687,6 +690,32 @@
   <section class="timeline">
     <h2 class="timeline-title">Tracklist</h2>
     <div class="thread"></div>
+
+    <svg style="position:absolute; top:18%; left:1%; width:70px; height:70px; z-index:1; filter:drop-shadow(0 0 12px var(--teal-glow)); transform:rotate(180deg) rotate(-10deg);" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#0a1414" stroke-width="2" stroke-linejoin="round">
+        <rect x="42" y="6" width="16" height="88" rx="3" fill="var(--teal)"/>
+        <rect x="12" y="34" width="76" height="16" rx="3" fill="var(--teal)"/>
+      </g>
+    </svg>
+
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="position:absolute; top:36%; right:1%; width:56px; height:56px; z-index:1; opacity:0.85; filter:drop-shadow(0 0 8px rgba(255,255,255,0.3)); transform:rotate(-8deg);">
+      <path d="M20 34 L20 14 Q20 9 25 9 Q30 9 30 14 L30 26 M30 24 L30 10 Q30 5 35 5 Q40 5 40 10 L40 26 M40 22 L40 12 Q40 7 45 7 Q50 7 50 12 L50 30 M50 26 Q54 26 54 31 L54 42 Q54 54 42 54 L28 54 Q16 54 16 42 L16 30 Q16 24 20 24 Z" fill="#e9e3d8" stroke="#111" stroke-width="1.5"/>
+    </svg>
+
+    <span style="position:absolute; top:52%; left:2%; font-size:1.6rem; color:var(--blood-bright); text-shadow:0 0 12px var(--blood-glow); z-index:1;">✝</span>
+
+    <svg style="position:absolute; top:64%; right:1.5%; width:60px; height:60px; z-index:1; filter:drop-shadow(0 0 12px var(--teal-glow)); transform:rotate(180deg) rotate(6deg);" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#0a1414" stroke-width="2" stroke-linejoin="round">
+        <rect x="42" y="6" width="16" height="88" rx="3" fill="var(--teal)"/>
+        <rect x="12" y="34" width="76" height="16" rx="3" fill="var(--teal)"/>
+      </g>
+    </svg>
+
+    <span style="position:absolute; top:80%; left:2%; font-size:1.4rem; color:var(--gold); z-index:1;">✦</span>
+
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="position:absolute; top:92%; right:1%; width:56px; height:56px; z-index:1; opacity:0.85; filter:drop-shadow(0 0 8px rgba(255,255,255,0.3)); transform:rotate(10deg);">
+      <path d="M20 34 L20 14 Q20 9 25 9 Q30 9 30 14 L30 26 M30 24 L30 10 Q30 5 35 5 Q40 5 40 10 L40 26 M40 22 L40 12 Q40 7 45 7 Q50 7 50 12 L50 30 M50 26 Q54 26 54 31 L54 42 Q54 54 42 54 L28 54 Q16 54 16 42 L16 30 Q16 24 20 24 Z" fill="#e9e3d8" stroke="#111" stroke-width="1.5"/>
+    </svg>
     <div class="entry">
       <div class="pin"></div>
       <div class="entry-date">Track 01</div>
@@ -886,13 +915,34 @@
         <div class="polaroid-caption">La photo qu'on a prise pendant France-Maroc</div>
       </div>
     </div>
-    <div class="entry" style="width:100%; left:0; text-align:center;">
+
+    <div class="entry" style="width:100%; left:0; text-align:center; position:relative; margin-bottom: 40px;">
       <div class="pin"></div>
       <div class="entry-date">Outro</div>
+
+      <!-- Photo Carti : mets ton fichier dans photos/carti-outro.png -->
+      <img src="photos/carti-outro.png" class="outro-photo" style="
+        position:absolute; top:20px; left:2%;
+        width:190px; border-radius:6px;
+        box-shadow: 0 0 0 1px var(--teal-glow), 0 0 30px var(--teal-glow);
+        transform: rotate(-6deg);
+        z-index:1;
+      ">
+
+      <!-- Photo Michael : mets ton fichier dans photos/mj-outro.png -->
+      <img src="photos/mj-outro.png" class="outro-photo" style="
+        position:absolute; top:20px; right:2%;
+        width:190px; border-radius:6px;
+        box-shadow: 0 0 0 1px var(--card-border), 0 0 30px var(--blood-glow);
+        transform: rotate(5deg);
+        z-index:1;
+      ">
+
       <div class="polaroid" style="display:inline-block; max-width:480px;">
         <div class="polaroid-caption" style="position:static; font-size:1.4rem; padding:20px 10px;">Bonne Anniv Badis 🫶🏻 𝐈 𝐀𝐌 𝐌𝐔𝐒𝐈𝐂 ♛ℳ𝒥♛</div>
       </div>
     </div>
+
 
     <!--
       ============================================
@@ -919,9 +969,10 @@
 
   </section>
 
-  <footer>
-     J'espère que tu as kiffé. J'aurais aimé t'offrir bien plus, mais j'ai aucune tal 😂 n'oublie jamais à quel point tu comptes pour moi et que n'importe l'heure et la date ou le contexte je serai tjr là pour t'aider et te répondre je suis infiniment reconnaissant que Dieu t'ait mis sur ma route 🙏🏻 Bonne anniv à très vite mon frère. LOVE U 🎂🖤
-
+  <footer style="max-width:560px; margin:0 auto; padding-top:20px;">
+    J'espère que tu as kiffé. J'aurais aimé t'offrir bien plus, mais j'ai aucune tal 😂 n'oublie jamais à quel point tu comptes pour moi et que n'importe l'heure et la date ou le contexte je serai tjr là pour t'aider et te répondre je suis infiniment reconnaissant que Dieu t'ait mis sur ma route 🙏🏻 Bonne anniv à très vite mon frère. LOVE U 🎂🖤
+    <br><br>
+    <span style="font-size:1.3rem;">𝐈 𝐀𝐌 𝐌𝐔𝐒𝐈𝐂 ♛ℳ𝒥♛</span>
   </footer>
 
     </div>
@@ -929,7 +980,7 @@
   </div>
 
   <audio id="bgMusic" loop preload="auto">
-   <source src="music/Smooth Criminal.mp3" type="audio/mpeg">
+    <source src="music/musique.mp3" type="audio/mpeg">
   </audio>
 
   <div class="music-panel" id="musicPanel">
@@ -1051,7 +1102,6 @@
       bgMusic.volume = e.target.value / 100;
     });
     volumeSlider.addEventListener('click', (e) => e.stopPropagation());
-  </script>
   </script>
 
 </body>
